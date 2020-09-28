@@ -2,7 +2,7 @@ package com.cg;
 import java.util.*;
 import java.util.regex.*;
 
-//UC7
+//UC8
 public class UserRegistration {
 	public static void FirstNameValidation(String input) {
 		String regex = "^[A-Z]+[a-z A-Z]{2,}";
@@ -95,6 +95,23 @@ public class UserRegistration {
 		}
 	}
 	
+	public static void PasswordRule4Validation(String input) {
+		String regex1 = "^[A-Z a-z]*(?=.*[A-Z])(?=.*[0-9])[A-Z a-z 0-9]*.{8,}$";
+		String regex2 = "^(?=.*[0-9 A-Z a-z])[0-9 A-Z a-z]*[$&+,:;=?@#|'<>.-^*()%!][0-9 A-Z a-z]*$";
+		Pattern pattern1 = Pattern.compile(regex1);
+		Pattern pattern2 = Pattern.compile(regex2);
+		Matcher matcher1 = pattern1.matcher(input);
+		Matcher matcher2 = pattern2.matcher(input);
+		boolean found1 = matcher1.find();
+		boolean found2 = matcher2.find();
+		if(found1 && found2) {
+			System.out.println("Password Rule 4 Validated");
+		}
+		else {
+			System.out.println("Password Rule 4 Not Validated");
+		}
+	}
+	
 	public static void main(String[] args) {
 		System.out.println("Welcome to User Registration!!!");
 		
@@ -121,5 +138,6 @@ public class UserRegistration {
 		PasswordRule1Validation(password);
 		PasswordRule2Validation(password);
 		PasswordRule3Validation(password);
+		PasswordRule4Validation(password);
 	}
 }
