@@ -70,7 +70,7 @@ public class UserRegistration {
 	}
 	
 	public static void PasswordRule2Validation(String input) {
-		String regex = "[A-Z+ a-z 0-9]{8,}";
+		String regex = "^[A-Z a-z]*(?=.*[A-Z])[A-Z a-z 0-9]*${8,}";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(input);
 		boolean found = matcher.find();
