@@ -2,7 +2,7 @@ package com.cg;
 import java.util.*;
 import java.util.regex.*;
 
-//UC3
+//UC4
 public class UserRegistration {
 	public static void FirstNameValidation(String input) {
 		String regex = "^[A-Z]+[a-z A-Z]{2,}";
@@ -43,6 +43,19 @@ public class UserRegistration {
 		}
 	}
 	
+	public static void MobileNumberValidation(String input) {
+		String regex = "^[0-9]{2}\s[0-9]{10}$";
+		Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+		Matcher matcher = pattern.matcher(input);
+		boolean found = matcher.find();
+		if(found) {
+			System.out.println("Mobile Number Validated");
+		}
+		else {
+			System.out.println("Mobile Number Not Validated");
+		}
+	}
+	
 	public static void main(String[] args) {
 		System.out.println("Welcome to User Registration!!!");
 		
@@ -59,5 +72,9 @@ public class UserRegistration {
 		System.out.println("Enter The Email Address : ");
 		String email = sc.nextLine();
 		EmailValidation(email);
+		
+		System.out.println("Enter The Mobile Number : ");
+		String mobile = sc.nextLine();
+		MobileNumberValidation(mobile);
 	}
 }
